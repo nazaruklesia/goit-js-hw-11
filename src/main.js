@@ -10,7 +10,7 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 import "./js/pixabay-api";
-import { getPictures } from "./js/pixabay-api";
+import {getPictures} from "./js/pixabay-api";
 
 import "./js/render-functions";
 import {reflectionPictures} from "./js/render-functions";
@@ -21,6 +21,16 @@ const formSearch = document.querySelector(".form-search");
 const gallery = document.querySelector(".gallery");
 const loader = document.querySelector(".loader");
 
+
+let lightbox = new SimpleLightbox(".gallery-item", {
+  captions: true,
+  captionSelector: "img",
+  captionType: "attr",
+  captionsData: "alt",
+  captionDelay: 250,
+});
+
+
 formSearch.addEventListener("submit", handlerSearch);
 
 function handlerSearch(event) {
@@ -29,11 +39,45 @@ function handlerSearch(event) {
     gallery.innerHTML = "";
     loader.style.display = "block";
 
-    const inputValue = event.target.elements.query.value;
+    const inputValue = event.target.elements.query.value.trim();
+
+     if (inputValue === "") {
+    iziToast.error({
+      title: "Error",
+      message: "Please enter a search query!",
+    });
+    return;
+     }
     
-    console.log(inputValue);
-// function name(params) {
+      gallery.innerHTML = "";
+    loader.style.display = "block";
     
-// }
+    getPictures(inputValue) 
+        .then(data => {
+            if (data.hits.lenght === 0) {
+                iziToast.info({
+                    title: "No Results",
+                    message: "Sorry, there are no images matching your search query. Please try again!"
+                });
+                return;
+            }
+            const markup = reflectionPictures(data.hits);
+      gallery.innerHTML = markup;
+
+      lightbox.refresh();
+        })
+        
+     .catch(error => {
+      iziToast.error({
+        title: "Error",
+        message: "Something went wrong. Please try again later!",
+      });
+    })
+    .finally(() => {
+      loader.style.display = "none";
+    });
+    
+    
+
 
 }

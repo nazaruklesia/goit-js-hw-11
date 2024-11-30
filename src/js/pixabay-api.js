@@ -24,5 +24,5 @@ const API_KEY = "47376974-17318822de3408abf70e5a971";
        })
 };
 
-
+console.log(getPictures());
 
