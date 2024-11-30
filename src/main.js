@@ -9,11 +9,11 @@ import SimpleLightbox from "simplelightbox";
 // Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-import "./js/pixabay-api";
-import {getPictures} from "./js/pixabay-api";
+import "./js/pixabay-api.js";
+import {getPictures} from "./js/pixabay-api.js";
 
-import "./js/render-functions";
-import {reflectionPictures} from "./js/render-functions";
+import "./js/render-functions.js";
+import {reflectionPictures} from "./js/render-functions.js";
 
 
 
