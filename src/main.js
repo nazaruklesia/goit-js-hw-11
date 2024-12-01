@@ -1,4 +1,4 @@
-
+"use strict"
 // Описаний у документації
 import iziToast from "izitoast";
 // Додатковий імпорт стилів
@@ -10,10 +10,10 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 import "./js/pixabay-api.js";
-import {getPictures} from "./js/pixabay-api.js";
+import getPictures from "./js/pixabay-api.js"
 
 import "./js/render-functions.js";
-import {reflectionPictures} from "./js/render-functions.js";
+import reflectionPictures from "./js/render-functions.js";
 
 
 
@@ -45,6 +45,7 @@ function handlerSearch(event) {
     iziToast.error({
       title: "Error",
       message: "Please enter a search query!",
+      position: "topRight",
     });
     return;
      }
@@ -57,7 +58,8 @@ function handlerSearch(event) {
             if (data.hits.lenght === 0) {
                 iziToast.info({
                     title: "No Results",
-                    message: "Sorry, there are no images matching your search query. Please try again!"
+                  message: "Sorry, there are no images matching your search query. Please try again!",
+                    position: "topRight",
                 });
                 return;
             }
@@ -71,13 +73,12 @@ function handlerSearch(event) {
       iziToast.error({
         title: "Error",
         message: "Something went wrong. Please try again later!",
+         position: "topRight",
       });
     })
     .finally(() => {
       loader.style.display = "none";
+  event.target.reset()
     });
     
-    
-
-
 }

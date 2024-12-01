@@ -1,7 +1,7 @@
 
+export default reflectionPictures;
 
-
-export function reflectionPictures(pictures) {
+ function reflectionPictures(pictures) {
     return pictures.map(
         ({ webformatURL, largeImageURL, tags,
             likes, views, comments, downloads }) => `
@@ -9,10 +9,10 @@ export function reflectionPictures(pictures) {
    <div class=all-gallary>
    <img src="${webformatURL}" alt="${tags}">
    <div class="description">
-   <p>"likes: ${likes}"</p>
-   <p>"views: ${views}"</p>
-   <p>"comments: ${comments}"</p>
-   <p>"downloads: ${downloads}"</p>
+   <p>Likes: <span>"${likes}"</span></p>
+   <p>Views: <span>"${views}"</span></p>
+   <p>Comments: <span>"${comments}"</span></p>
+   <p>Downloads: <span>"${downloads}"</span></p>
    </div>
    </div>
    </a>

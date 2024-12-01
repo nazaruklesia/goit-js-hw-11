@@ -1,7 +1,9 @@
 
 
 
-export function getPictures(query) {
+export default getPictures;
+
+    function getPictures(query) {
 
 const BASE_URL = "https://pixabay.com/api/";
 const API_KEY = "47376974-17318822de3408abf70e5a971";
