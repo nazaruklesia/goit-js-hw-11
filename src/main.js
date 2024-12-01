@@ -1,12 +1,8 @@
 "use strict"
-// Описаний у документації
-import iziToast from "izitoast";
-// Додатковий імпорт стилів
-import "izitoast/dist/css/iziToast.min.css";
 
-// Описаний у документації
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
-// Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 import "./js/pixabay-api.js";
@@ -82,3 +78,5 @@ function handlerSearch(event) {
     });
     
 }
+
+
